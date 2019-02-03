@@ -283,9 +283,9 @@ class Application
     webroot = path.join path.dirname(fs.realpathSync(__filename)), '../../'
 
     @connectServer = connect.createServer()
-    if options.web.log
+    if @options.web.log
       @connectServer.use '/', connect.logger()
-    @connectServer.use '/', redirector(options.general.base)
+    @connectServer.use '/', redirector(@options.general.base)
     @connectServer.use '/', connect.static(webroot)
 
     @games = {}
